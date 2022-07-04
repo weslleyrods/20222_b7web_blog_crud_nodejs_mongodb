@@ -7,7 +7,7 @@ const router = express.Router()
 const homeController = require('../controllers/homeController')
 const userController = require('../controllers/userController')
 
-router.get('/', homeController.index); 
+router.get('/', homeController.userMiddleware, homeController.index); 
 router.get('/user/login', userController.login)
 
 /* router.get('/', (req, res)=>{

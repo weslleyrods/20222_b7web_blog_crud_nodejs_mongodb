@@ -1,7 +1,16 @@
+exports.userMiddleware = (req, res, next)=>{
+
+    let info = {name: 'Weslley', id: 123};
+    req.userInfo = info;
+    next();
+};
+
 exports.index = (req, res)=>{
     ///1º parametro - nome do arquivo que irá redenrizar na pastas views
     let obj = {
     pageTitle: 'Titulo de teste',
+    userInfo: req.userInfo,
+
     'nome':req.query.nome,
     'idade': req.query.idade,
     mostrar: true,
