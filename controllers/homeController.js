@@ -1,0 +1,16 @@
+exports.index = (req, res)=>{
+    ///1º parametro - nome do arquivo que irá redenrizar na pastas views
+    let obj = {
+    pageTitle: 'Titulo de teste',
+    'nome':req.query.nome,
+    'idade': req.query.idade,
+    mostrar: true,
+    ingredientes: [
+        {nome: 'Arroz', qtd: '20g'}, 
+        {nome: 'Feijão', qtd: '10g'}
+    ],
+    interesses: ['node', 'js', 'css'],
+    // teste: '<strong>Testando negrito</strong>'
+    }
+    res.render('home', obj); 
+}

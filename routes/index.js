@@ -1,26 +1,14 @@
 
 //rotas do site principal
 const express = require('express');
-
 //Definição de rotas (caminhos que o usuário irá seguir)
 const router = express.Router()
 
-router.get('/', (req, res)=>{
-    ///1º parametro - nome do arquivo que irá redenrizar na pastas views
-    let obj = {
-    pageTitle: 'Titulo de teste',
-    'nome':req.query.nome,
-    'idade': req.query.idade,
-    mostrar: true,
-    ingredientes: [
-        {nome: 'Arroz', qtd: '20g'},
-        {nome: 'Feijão', qtd: '10g'}
-    ],
-    interesses: ['node', 'js', 'css'],
-    // teste: '<strong>Testando negrito</strong>'
-    }
-    res.render('home', obj); 
-})
+const homeController = require('../controllers/homeController')
+const userController = require('../controllers/userController')
+
+router.get('/', homeController.index); 
+router.get('/user/login', userController.login)
 
 /* router.get('/', (req, res)=>{
     //let nome = req.query.nome;
