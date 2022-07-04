@@ -1,0 +1,34 @@
+{{> header}}
+
+<h1>Página Home:</h1>
+
+<h1>Seja bem vindo(a)</h1>
+<p>Qualquer mensagem<p> 
+{{#mostrar}}
+<p>Nome: {{nome}} Idade: {{idade}}<p>
+{{/mostrar}}
+
+{{#ingredientes}}
+
+<li>{{nome}} - Quantidade: {{qtd}}</li>
+{{/ingredientes}}
+<hr/>
+
+{{#interesses}}
+<li>{{.}}</li>
+{{/interesses}}
+
+{{teste}} 
+<br/>
+{{{teste}}} <!---Interpreta literalmente o html-->
+
+{{#mostrar}}
+{{^ingredientes}}
+<P>Não há ingredientes</p>
+{{/ingredientes}}
+{{/mostrar}}
+
+{{! forma de comentar}}
+
+
+
