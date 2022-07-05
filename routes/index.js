@@ -10,7 +10,7 @@ const userController = require('../controllers/userController')
 router.get('/', homeController.userMiddleware, homeController.index); 
 router.get('/user/login', userController.login)
 
-/* router.get('/', (req, res)=>{
+/* router.get('/', (req, res)=>{ 
     //let nome = req.query.nome;
     //let sobrenome = req.query.sobrenome;
     //let idade = req.query.idade;
