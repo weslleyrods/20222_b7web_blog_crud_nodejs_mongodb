@@ -1,14 +1,18 @@
 
 //rotas do site principal
 const express = require('express');
+const homeController = require('../controllers/homeController')
+const userController = require('../controllers/userController')
+const postController = require('../controllers/postController')
+
 //Definição de rotas (caminhos que o usuário irá seguir)
 const router = express.Router()
 
-const homeController = require('../controllers/homeController')
-const userController = require('../controllers/userController')
-
 router.get('/', homeController.userMiddleware, homeController.index); 
 router.get('/user/login', userController.login)
+router.get('/post/add', postController.add)
+router.post('/post/add', postController.addAction) //Action é uma convenção, que se refere ao recebimento de dados da tela
+
 
 /* router.get('/', (req, res)=>{ 
     //let nome = req.query.nome;

@@ -1,6 +1,5 @@
 require('dotenv').config({path:'.env'})
 //require('dotenv').config
-const app = require('./app')
 const mongoose = require('mongoose')
 
 const {
@@ -19,8 +18,12 @@ mongoose.connection.on('error', (error)=>{
     console.error("ERRO: "+error.message )
 })
 
-app.set('port', process.env.PORT || 3000);
+//Carregando todos os models
+require('./models/Post');
 
+const app = require('./app')
+
+app.set('port', process.env.PORT || 3000);
 const server = app.listen(app.get('port'), ()=>{
     console.log("Servidor rodando na porta: "+server.address().port);
 }); 
