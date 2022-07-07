@@ -8,6 +8,8 @@ exports.add = (req, res)=>{
 exports.addAction = async (req, res)=>{
     //res.json(req.body)
     const post = new Post(req.body);
-    await post.save();
+    await post.save();   
+    req.flash('success', 'Post salvo com sucesso!')
+    //req.flash('error', 'Erro ao salvar o post!')
     res.redirect('/');
 };

@@ -19,5 +19,15 @@
     <li><a href="{{slug}}">{{name}}</a></li>
     {{/h.menu}}
 <ul>
+<hr>
+    {{#flashes}}
+        {{#success}}
+            <!--{{.}} pega o conteúdo dentro de success-->
+            <div>{{.}}</div> 
+        {{/success}}
+        {{#error}}
+            <div>{{.}}</div>
+        {{/error}}
+    {{/flashes}}
 
 
