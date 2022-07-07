@@ -2,6 +2,14 @@
 
 <h1>Página Home:</h1>
 
+{{#posts}}
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+    <hr/> 
+{{/posts}}
+
+
+<!--
 <p>Usuário logado: {{userInfo.name}}</p>
 
 <h1>Seja bem vindo(a)</h1>
@@ -20,10 +28,10 @@
 <li>{{.}}</li>
 {{/interesses}}
 
+
 {{teste}} 
 <br/>
-{{{teste}}} <!---Interpreta literalmente o html-->
-
+{{{teste}}}
 {{#mostrar}}
 {{^ingredientes}}
 <P>Não há ingredientes</p>
@@ -31,6 +39,6 @@
 {{/mostrar}}
 
 {{! forma de comentar}}
-
+-->
 
 

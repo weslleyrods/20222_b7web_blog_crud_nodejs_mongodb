@@ -1,11 +1,13 @@
 <html>
 <head>
+    <!--
     {{#pageTitle}}
     <title>{{pageTitle}}</title>
     {{/pageTitle}}
     {{^pageTitle}}
     <title>{{h.defaultPageTitle}}</title>
     {{/pageTitle }}
+    -->
     <!--
         Outra forma
         <title>{{pageTitle}} {{h.defaultPageTitle}}</title>
@@ -14,12 +16,12 @@
 <body>
 <h1>Cabeçalho do site</h1>
 <hr/>
-<ul>
-    {{#h.menu}}
-    <li><a href="{{slug}}">{{name}}</a></li>
-    {{/h.menu}}
-<ul>
-<hr>
+    <ul>
+        {{#h.menu}}
+        <li><a href="{{slug}}">{{name}}</a></li>
+        {{/h.menu}}
+    </ul>
+<hr/>
     {{#flashes}}
         {{#success}}
             <!--{{.}} pega o conteúdo dentro de success-->

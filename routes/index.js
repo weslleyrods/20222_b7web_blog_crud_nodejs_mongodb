@@ -8,7 +8,8 @@ const postController = require('../controllers/postController')
 //Definição de rotas (caminhos que o usuário irá seguir)
 const router = express.Router()
 
-router.get('/', homeController.userMiddleware, homeController.index); 
+//router.get('/', homeController.userMiddleware, homeController.index); 
+router.get('/', homeController.index); 
 router.get('/user/login', userController.login)
 router.get('/post/add', postController.add)
 router.post('/post/add', postController.addAction) //Action é uma convenção, que se refere ao recebimento de dados da tela

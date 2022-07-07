@@ -4,13 +4,13 @@ mongoose.Promise  = global.Promise;
 
 const postSchema = new mongoose.Schema({
     title:{
-        type: String,
-        trim: true, //trim remove espaço inicial e final de texto
+        type:String,
+        trim:true, //trim remove espaço inicial e final de texto
         required: "É necessário ter título", 
     },
-    slug: String,
+    slug:String,
     body:{
-        type: String,
+        type:String,
         trim: true,
     },
     tags: [String]

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const Post = mongoose.model('Post')
+const Post  = mongoose.model('Post')
+
 
 exports.add = (req, res)=>{
     res.render('postAdd')
@@ -11,10 +12,10 @@ exports.addAction = async (req, res)=>{
 
     try{
         await post.save();   
-        req.flash('success', 'Post salvo com sucesso!');
     }catch(error){
         req.flash('error', 'Erro: '+error.message);
         return res.redirect('/post/add')    
     }
+    req.flash('success', 'Post salvo com sucesso!');
     res.redirect('/');
 }; 
