@@ -11,8 +11,13 @@ const router = express.Router()
 //router.get('/', homeController.userMiddleware, homeController.index); 
 router.get('/', homeController.index); 
 router.get('/user/login', userController.login)
+
 router.get('/post/add', postController.add)
-router.post('/post/add', postController.addAction) //Action é uma convenção, que se refere ao recebimento de dados da tela
+//Action é uma convenção, que se refere ao recebimento de dados da tela
+router.post('/post/add', postController.addAction) 
+
+router.get('/post/:slug/edit', postController.edit)
+router.post('/post/:slug/edit', postController.editAction)
 
 
 /* router.get('/', (req, res)=>{ 
