@@ -7,7 +7,9 @@ exports.add = (req, res)=>{
 };
 
 exports.addAction = async (req, res)=>{
-    //res.json(req.body)
+
+    //res.json(req.body) 
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.trim());
     const post = new Post(req.body);
 
     try{
@@ -28,16 +30,22 @@ exports.edit = async (req, res)=>{
 }
 
 exports.editAction = async (req, res)=>{
+    req.body.slug = require('slug')(req.body.title, {lower:true});
     //Procurar o item enviado
-    const post = await Post.findOneAndUpdate(
-        //Pegar os dados e atualizar
-        {slug: req.params.slug}, 
-        req.body,
-        {
-            new: true, //retorna um NOVO post item atualizado
-            runValidators: true //garante que as validações sejam cumpridas na edição
+    try{
+        const post = await Post.findOneAndUpdate(
+            //Pegar os dados e atualizar
+            {slug: req.params.slug}, 
+            req.body,
+            {
+                new: true, //retorna um NOVO post item atualizado
+                runValidators: true //garante que as validações sejam cumpridas na edição
+            }
+            );
+        }catch(error){
+            req.flash('error', 'Ocorr eu um erro! Tente novamente mais tarde')
+            return res.redirect('/post/'+req.params.slug+'/edit')
         }
-    );
     //Mostrar mensagem de sucesso
     req.flash('success', 'Post atualizado com sucesso!');
     //Redirecionar para a home
