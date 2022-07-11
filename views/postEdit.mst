@@ -12,8 +12,9 @@
     </label>
     <br/>
 
-    <label for="">
-        Tags: 
+    <label>
+        Tags: <small>(Separar as tags por vírgula)</small><br/>
+        <input type="text" name="tags" value={{post.tags}}>
     </label>
     <br/>
 

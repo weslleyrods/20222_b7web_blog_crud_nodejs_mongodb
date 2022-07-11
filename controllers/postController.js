@@ -30,6 +30,7 @@ exports.edit = async (req, res)=>{
 }
 
 exports.editAction = async (req, res)=>{
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.trim());
     req.body.slug = require('slug')(req.body.title, {lower:true});
     //Procurar o item enviado
     try{
