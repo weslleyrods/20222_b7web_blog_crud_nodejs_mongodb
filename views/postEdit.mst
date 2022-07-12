@@ -1,3 +1,5 @@
+{{> header}}
+
 <h2>Editar post</h2>
 
 <form method="POST">

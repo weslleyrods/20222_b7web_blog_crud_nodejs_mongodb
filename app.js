@@ -13,6 +13,8 @@ const errorHandler = require('./handlers/errorHandler')
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use(express.static(__dirname+'/public'))
+
 app.use(cookieParser(process.env.SECRET));
 app.use(session({
     secret: process.env.SECRET,

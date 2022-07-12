@@ -1,35 +1,41 @@
 <html>
 <head>
-    <!--
     {{#pageTitle}}
     <title>{{pageTitle}}</title>
     {{/pageTitle}}
     {{^pageTitle}}
     <title>{{h.defaultPageTitle}}</title>
     {{/pageTitle }}
-    -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+  
     <!--
         Outra forma
         <title>{{pageTitle}} {{h.defaultPageTitle}}</title>
+        <link rel="stylesheet" href="/assets/css/style.css" }}
     -->
 </head>
 <body>
+<header>
 <h1>Cabeçalho do site</h1>
-<hr/>
+    <hr/>
     <ul>
         {{#h.menu}}
         <li><a href="{{slug}}">{{name}}</a></li>
         {{/h.menu}}
     </ul>
-<hr/>
-    {{#flashes}}
-        {{#success}}
-            <!--{{.}} pega o conteúdo dentro de success-->
-            <div>{{.}}</div> 
-        {{/success}}
-        {{#error}}
-            <div>{{.}}</div>
-        {{/error}}
-    {{/flashes}}
+</header>
+
+{{#flashes}}
+    {{#success}}
+        <!--{{.}} pega o conteúdo dentro de success-->
+        <div class="warning">{{.}}</div> 
+    {{/success}}
+    {{#error}}
+        <div class="warning">{{.}}</div>
+    {{/error}}
+    {{#info}}
+        <div class="warning">{{.}}</div>
+    {{/info}}
+{{/flashes}}
 
 
