@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise  = global.Promise; 
 
 const postSchema = new mongoose.Schema({
+    photo: String, 
     title:{
         type:String,
         trim:true, //trim remove espaço inicial e final de texto
