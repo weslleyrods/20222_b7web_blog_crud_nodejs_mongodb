@@ -32,4 +32,18 @@ postSchema.pre('save', async function(next){
     next();
 });
 
+//função estática para criar a listagem de tags
+postSchema.statics.getTagsList = function(){
+    return this.aggregate([
+        //$tags acessa o campo de tags
+        {$unwind: '$tags'},
+        //$group agrupa somente as tags
+        //_id é nome escolhido para o valor de tags, esse nome é usado na home para impressão das tags com o mustache
+        //$sum faz a contagem de repetição de cada tag
+        {$group:{_id:'$tags', count:{$sum:1}}},
+        //$sort ordena as tags, 1 para crescente e -1 para decrescente
+        {$sort: {count: -1}}
+    ]);
+};
+
 module.exports = mongoose.model('Post', postSchema);
