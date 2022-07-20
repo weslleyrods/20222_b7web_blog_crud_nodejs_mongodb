@@ -1,8 +1,13 @@
 {{> header}}
 
-<h1>Faça o seu CadasLogintro</h1>
+<h1>Faça o seu Cadastro</h1>
 
 <form method="POST">
+    <label>
+        Nome:
+        <input type="text" name="name">
+    </label>
+    <br/>
     <label>
         E-mail:
         <input type="email" name="email">
@@ -14,6 +19,6 @@
     </label>
     <br/>
     <label>
-        <input type="submit" value="Logar">
+        <input type="submit" value="Cadastrar">
     </label>
 </form>

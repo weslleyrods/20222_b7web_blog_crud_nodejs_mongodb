@@ -1,17 +1,22 @@
 
 //rotas do site principal
 const express = require('express');
-const homeController = require('../controllers/homeController')
-const userController = require('../controllers/userController')
-const postController = require('../controllers/postController')
-const imageMiddleware = require('../middlewares/imageMiddleware')
+const homeController = require('../controllers/homeController');
+const userController = require('../controllers/userController');
+const postController = require('../controllers/postController');
+const imageMiddleware = require('../middlewares/imageMiddleware');
 
 //Definição de rotas (caminhos que o usuário irá seguir)
 const router = express.Router()
 
 //router.get('/', homeController.userMiddleware, homeController.index); 
 router.get('/', homeController.index); 
-router.get('/user/login',  userController.login);
+
+router.get('/users/login',  userController.login);
+router.post('/users/login', userController.loginAction);
+
+router.get('/users/register', userController.register);
+router.post('/users/register', userController.registerAction);
 
 router.get('/post/add', postController.add);
 //Action é uma convenção, que se refere ao recebimento de dados da tela
