@@ -8,18 +8,26 @@ exports.loginAction = (req, res)=>{
     const auth = User.authenticate();
 
     auth(req.body.email, req.body.password, (error, result)=>{
-        if(!result){
-            req.flash('error', 'E-mail e/ou senha incorretos .');
-            res.redirect('/users/login');
-            return;
-        }
+        // if(!result){
+        //     req.flash('error', 'E-mail e/ou senha incorretos.');
+        //     res.redirect('/results/login');
+        //     return;
+        // }
 
         //realiza o login de fato, o 2º parâmetro verifica se houve erro, mas já está sendo feita a vericação
         //por isso, foi utilizado uma função vazia
-        //req.login(result, ()=>{});  
+        // const aux = req.login(result, ()=>{});  
+        // console.log(aux);
 
-        req.flash('success', 'Login realizado com sucesso!');
-        res.redirect('/');
+        req.login(result, function(error) {
+            if (error) return error;
+            req.flash('success', 'Login realizado com sucesso!');
+            res.redirect('/');
+            return;
+        });
+
+        // req.flash('success', 'Login realizado com sucesso!');
+        // res.redirect('/');
     });
 }; 
 
@@ -34,8 +42,8 @@ exports.registerAction = (req, res)=>{
     const newUser = new User(req.body);
     User.register( newUser, req.body.password, (error)=>{
         if(error){
-            //console.log('Erro ao registrar: ', error);
-            //res.redirect('/');
+            /* console.log('Erro ao registrar: ', error);
+            res.redirect('/'); */
             req.flash('error', 'Ocorreu um erro, tente mais tarde.')
             res.redirect('/users/register');
             return;

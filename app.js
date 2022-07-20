@@ -3,15 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose'); 
 //chamada das rotas somente do usuário
 const mustache = require('mustache-express');
+
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const flash = require('express-flash') 
-
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy;
+const flash = require('express-flash');
 
 const router = require('./routes/index');
-const helpers = require ('./helpers')
+const helpers = require ('./helpers');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+
 const app = express();
 const errorHandler = require('./handlers/errorHandler');
 
@@ -27,17 +30,17 @@ app.use(session({
     saveUninitialized: false, //não salva a sessão se não houver dados para serem salvos
 }));
 app.use(flash());
+const User = require('./models/User');
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req, res, next)=>{
     res.locals.h = helpers;
     res.locals.flashes = req.flash();
-    //res.locals.user = req.user;
+    res.locals.user = req.user;
     next();
 });
-
-app.use(passport.initialize());
-app.use(passport.session());
-const User = require('./models/User');
 
 //configurações relacionadas ao passport 
 passport.use(new LocalStrategy(User.authenticate())); 

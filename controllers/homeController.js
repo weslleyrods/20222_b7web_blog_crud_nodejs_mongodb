@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Post  = mongoose.model('Post')
 
+
 exports.index = async (req, res)=>{
     ///1º parametro - nome do arquivo que irá redenrizar na pastas views
     let responseJson = {
@@ -10,7 +11,7 @@ exports.index = async (req, res)=>{
     tag: '',
     };
 
-    //console.log(req.user);
+    console.log(req.user);
 
     //pega da query(url) a tag selecionada
     responseJson.tag = req.query.t;

@@ -11,9 +11,10 @@ const router = express.Router();
 //router.get('/', homeController.user Middleware, homeController.index); 
 router.get('/', homeController.index); 
 router.get('/users/login',  userController.login);
+router.post('/users/login', userController.loginAction);
+
 router.get('/users/register', userController.register);
 router.post('/users/register', userController.registerAction);
-router.post('/users/login', userController.loginAction);
 // router.post('/users/logout', userController.logout);
 
 
