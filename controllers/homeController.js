@@ -6,14 +6,15 @@ exports.index = async (req, res)=>{
     let responseJson = {
     pageTitle: 'HOME',
     posts:[],
-    tags:[],
+    tags:[], 
     tag: '',
     };
 
+    //console.log(req.user);
+
     //pega da query(url) a tag selecionada
     responseJson.tag = req.query.t;
-
-    const postFilter = (typeof responseJson.tag != 'undefined')? { tags: responseJson.tag }: {};
+    const postFilter = (typeof responseJson.tag != 'undefined') ? { tags: responseJson.tag }: {};
     //console.log(typeof postFilter);
 
     //Para receber a listagem de tags do homeController, separando o post da tag

@@ -1,6 +1,6 @@
 {{> header}}
 
-<h1>Faça o seu CadasLogintro</h1>
+<h1>Faça o seu Login</h1>
 
 <form method="POST">
     <label>
