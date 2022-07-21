@@ -8,26 +8,14 @@ exports.loginAction = (req, res)=>{
     const auth = User.authenticate();
 
     auth(req.body.email, req.body.password, (error, result)=>{
-        // if(!result){
-        //     req.flash('error', 'E-mail e/ou senha incorretos.');
-        //     res.redirect('/results/login');
-        //     return;
-        // }
-
         //realiza o login de fato, o 2º parâmetro verifica se houve erro, mas já está sendo feita a vericação
         //por isso, foi utilizado uma função vazia
-        // const aux = req.login(result, ()=>{});  
-        // console.log(aux);
-
         req.login(result, function(error) {
             if (error) return error;
             req.flash('success', 'Login realizado com sucesso!');
             res.redirect('/');
             return;
         });
-
-        // req.flash('success', 'Login realizado com sucesso!');
-        // res.redirect('/');
     });
 }; 
 
@@ -53,3 +41,10 @@ exports.registerAction = (req, res)=>{
         //res.redirect('/')
     });
 };
+
+    exports.logout = (req, res, next)=>{
+    req.logout(function(err) {
+        if (err) { return next(err); };
+    res.redirect('/');
+    });
+}
