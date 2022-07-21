@@ -36,9 +36,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next)=>{
-    res.locals.h = helpers;
+    //o operador spread passa os valores de helpers para o h, e não o helpers em si
+    //para que após login, as demais opções do menus para guest não sejam excluídas após logout
+    res.locals.h = {...helpers};
     res.locals.flashes = req.flash();
     res.locals.user = req.user;
+
+    if(req.isAuthenticated()){
+        //filtrar menu para guest ou logged
+        res.locals.h.menu = res.locals.h.menu.filter(i=>i.logged);
+    }else{
+        //filtrar menu para guest
+        res.locals.h.menu = res.locals.h.menu.filter(i=>i.guest);
+    }
+
     next();
 });
 
