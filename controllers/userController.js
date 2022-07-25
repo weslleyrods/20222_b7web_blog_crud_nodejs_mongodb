@@ -11,7 +11,7 @@ exports.loginAction = (req, res)=>{
         //realiza o login de fato, o 2º parâmetro verifica se houve erro, mas já está sendo feita a vericação
         //por isso, foi utilizado uma função vazia
         req.login(result, function(error) {
-            if (error) return error;
+            if (error){return error};
             req.flash('success', 'Login realizado com sucesso!');
             res.redirect('/');
             return;
@@ -58,6 +58,8 @@ exports.profileAction = async (req,res)=>{
     try{
         const user = await User.findOneAndUpdate(
             {_id: req.user._id},
+            //não optado em utilizar o body, porque o objetivo era alterar especificamente o nome e email,
+            //não o hash e etc...
             {name: req.body.name, email:req.body.email},
             {new: true, runValidators: true}
         );
