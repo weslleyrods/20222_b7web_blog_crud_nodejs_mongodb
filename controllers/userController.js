@@ -11,7 +11,11 @@ exports.loginAction = (req, res)=>{
         //realiza o login de fato, o 2º parâmetro verifica se houve erro, mas já está sendo feita a vericação
         //por isso, foi utilizado uma função vazia
         req.login(result, function(error) {
-            if (error){return error};
+            if (error){
+                req.flash('error', 'Seu e-mail e/ou senha estão errados!');
+                res.redirect('/users/login');
+                return;
+            };
             req.flash('success', 'Login realizado com sucesso!');
             res.redirect('/');
             return;
