@@ -19,6 +19,9 @@ router.get('/users/logout', userController.logout);
 router.get('/users/register', userController.register);
 router.post('/users/register', userController.registerAction);
 
+router.get('/profile', authMiddleware.isLogged, userController.profile);
+router.post('/profile', authMiddleware.isLogged, userController.profileAction);
+
 
 router.get('/post/add', authMiddleware.isLogged, postController.add);
 //Action é uma convenção, que se refere ao recebimento de dados da tela
