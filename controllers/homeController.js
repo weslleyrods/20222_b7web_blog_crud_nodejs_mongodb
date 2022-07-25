@@ -15,12 +15,13 @@ exports.index = async (req, res)=>{
 
     //pega da query(url) a tag selecionada
     responseJson.tag = req.query.t;
+    //if ternario p/ satisfazer a filtragem do post quando houver ou não uma tag selecionada
     const postFilter = (typeof responseJson.tag != 'undefined') ? { tags: responseJson.tag }: {};
     //console.log(typeof postFilter);
 
     //Para receber a listagem de tags do homeController, separando o post da tag
-    const tagsPromise = Post.getTagsList();
-    const postsPromise = Post.find(postFilter);
+    const tagsPromise = Post.getTagsList(); //lista de tags
+    const postsPromise = Post.findPosts(postFilter); //lista de posts com base no filtro do usuario(tag clicada)
 
     //grupo de promises - melhora o desempenho, permetindo que um resultado não dependa do outro
     //sendo chamadado-os ao mesmo tempo como promise.
@@ -28,6 +29,8 @@ exports.index = async (req, res)=>{
     //outra forma 
     /*  const tags = result[0];
     const posts = result[1]; */
+
+    console.log(posts[0]);
 
     for(let i in tags){
         if(tags[i]._id == responseJson.tag){

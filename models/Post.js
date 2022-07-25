@@ -15,7 +15,8 @@ const postSchema = new mongoose.Schema({
         type:String,
         trim: true,
     },
-    tags: [String]
+    tags: [String],
+    author: mongoose.Schema.Types.ObjectId,
 });
 
 postSchema.pre('save', async function(next){
@@ -45,5 +46,31 @@ postSchema.statics.getTagsList = function(){
         {$sort: {count: -1}}
     ]);
 };
+
+postSchema.statics.findPosts = function(filters={}){
+    //aggregate permite manipular dados de uma coleção com uma sequencia de manipulações
+    return this.aggregate([
+        //match faz a filtragem dos documentos que atenda a especificação, no caso, o filtro que o usuario passou
+        {$match: filters},
+        //lookup faz um join entre partes diferentes partes do db
+        {$lookup: {
+            from: 'users', //acessa a coleção de users do db
+            let:{'author':'$author'}, //pega o valor de author (de Post) e atribui a variavel author
+            pipeline:[
+                //$ o mongodb entende como o campo da consulta
+                //$$ o mongodb entende como o campo criado para o lookup
+                {$match: {$expr: {$eq:['$$author', '$_id']}} } ,
+                {$limit:1}
+            ],
+            as: 'author', //salva no campo author dessa requisição, para substituir por outro campo author da home
+        }},
+        //addFields permite adicionar novos campos na saida do documento
+        //nesse caso, foi utilizado para reescrever a própria variavel author,
+        //para venha o elemento específico do array de author que foi gerado do lookup.
+        {$addFields:{
+            'author': {$arrayElemAt:['$author',0]}
+        }}
+    ]);
+}
 
 module.exports = mongoose.model('Post', postSchema);
