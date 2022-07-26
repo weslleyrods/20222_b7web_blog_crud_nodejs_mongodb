@@ -6,6 +6,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
 });
 
 //adiciona plugin do passport dentro do model

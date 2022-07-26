@@ -11,7 +11,7 @@ exports.isLogged = (req, res, next)=>{
 exports.changePassword = (req, res)=>{
 
     if(req.body.password != req.body['password-confirm']){
-        req.flash('error', 'As senhas não batem');
+        req.flash('error', 'As senhas não coincidem');
         res.redirect('/profile');
         return;
     }

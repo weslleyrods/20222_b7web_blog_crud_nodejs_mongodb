@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const crypto = require('crypto'); //crypto é uma biblioteca própria do Node para gerar Token
 
 exports.login = (req, res)=>{
     res.render('login')
@@ -74,4 +75,75 @@ exports.profileAction = async (req,res)=>{
     }
     req.flash('success', 'Dados atualizados com sucesso!');
     res.redirect('/profile');
+};
+
+exports.forget = (req, res)=>{
+    res.render('forget')
+};
+
+exports.forgetAction = async (req, res)=>{
+    //1 - verifica se o usuario existe
+    const user = await User.findOne({email:req.body.email}).exec();
+    if(!user){
+        req.flash('error', 'O de recuperação foi e-mail foi enviado para você.');
+        res.redirect('/users/forget');
+        return;
+    }
+    //2 - gera um token com data de expiração e salva no bd
+        //crypto é uma biblioteca própria do Node para gerar Token
+    user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    user.resetPasswordExpires = Date.now()+3600000; //configura o tempo de expiração - optado por data atual + 1 hora
+    await user.save();
+
+    //3 - gera o link com tolken para troca de senha
+    const resetLink = `http://${req.headers.host}/users/reset/${user.resetPasswordToken}`
+    //4 - envia o link via email para o usuario
+        //To-Do
+    //5 - usuario vai acessa o link para trocar a senha
+    req.flash('success', 'Enviamos um e-mail com as instruções.'+ resetLink);
+    res.redirect('/users/login');
+
+};
+
+exports.forgetToken = async (req, res)=>{
+    //verifica se o Token existe e se ainda está válido
+    const user = await User.findOne({
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: {$gt: Date.now()}
+    }).exec();
+
+    if(!user){
+        req.flash('error', 'Token expirado!');
+        res.redirect('/users/forget');
+        return;
+    }
+    res.render('forgetPassword');
+};
+
+exports.forgetTokenAction = async (req,res)=>{
+    //verifica se o Token existe e se ainda está válido
+    const user = await User.findOne({
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: {$gt: Date.now()}
+    }).exec();
+    
+    if(!user){
+        req.flash('error', 'Token expirado!');
+        res.redirect('/users/forget');
+        return;
+    }
+    
+    if(req.body.password != req.body['password-confirm']){
+        req.flash('error', 'As senhas não coincidem');
+        res.redirect('back');
+        return;
+    }
+    //diferente de authMiddleware, não será usado req.user para trocar a senha
+    //pois o mesmo não se encontrará logado na tela de nova senha via recuperação de senha
+    //sendo assim, usa-se o usuário que está sendo acessado do bd (user) pela rota de recuperação de senha
+    user.setPassword(req.body.password, async ()=>{
+        await user.save();
+        req.flash('success', 'A senha foi alterada com sucesso!');
+        res.redirect('/');
+    });
 };
