@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const crypto = require('crypto'); //crypto é uma biblioteca própria do Node para gerar o Token
 const mailHandler = require('../handlers/mailHandler');
-const MailMessage = require('nodemailer/lib/mailer/mail-message');
 
 exports.login = (req, res)=>{
     res.render('login')

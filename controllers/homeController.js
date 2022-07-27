@@ -21,7 +21,8 @@ exports.index = async (req, res)=>{
 
     //Para receber a listagem de tags do homeController, separando o post da tag
     const tagsPromise = Post.getTagsList(); //lista de tags
-    const postsPromise = Post.findPosts(postFilter); //lista de posts com base no filtro do usuario(tag clicada)
+    //const postsPromise = Post.findPosts(postFilter); //lista de posts com base no filtro do usuario(tag clicada)
+    const postsPromise = Post.find(postFilter).populate('author');//substitui o lookup no aggregate do vincuclo de post com usuario
 
     //grupo de promises - melhora o desempenho, permetindo que um resultado não dependa do outro
     //sendo chamadado-os ao mesmo tempo como promise.
