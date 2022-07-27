@@ -1,5 +1,7 @@
 const User = require('../models/User');
-const crypto = require('crypto'); //crypto é uma biblioteca própria do Node para gerar Token
+const crypto = require('crypto'); //crypto é uma biblioteca própria do Node para gerar o Token
+const mailHandler = require('../handlers/mailHandler');
+const MailMessage = require('nodemailer/lib/mailer/mail-message');
 
 exports.login = (req, res)=>{
     res.render('login')
@@ -82,10 +84,11 @@ exports.forget = (req, res)=>{
 };
 
 exports.forgetAction = async (req, res)=>{
+    const mailMessage = `Caso exista uma conta com o e-mail que você digitou, vamos enviar um e-mail com as instruções e o link para você trocar a senha. Se você não receber o e-mail em alguns minutos, verifique a sua caixa de spam ou tente novamente.`
     //1 - verifica se o usuario existe
     const user = await User.findOne({email:req.body.email}).exec();
     if(!user){
-        req.flash('error', 'O de recuperação foi e-mail foi enviado para você.');
+        req.flash('error', `${mailMessage}`);
         res.redirect('/users/forget');
         return;
     }
@@ -96,11 +99,22 @@ exports.forgetAction = async (req, res)=>{
     await user.save();
 
     //3 - gera o link com tolken para troca de senha
-    const resetLink = `http://${req.headers.host}/users/reset/${user.resetPasswordToken}`
+    const resetLink = `http://${req.headers.host}/users/reset/${user.resetPasswordToken}`;
+
     //4 - envia o link via email para o usuario
-        //To-Do
+    const html = `Testendo e-mail com link:<br/><a href="${resetLink}">Resetar a sua senha</a>`;
+    const text = `Testando e-mail com libk: ${resetLink}`;
+    const to = `${user.name} <${user.email}>`
+
+    mailHandler.send({
+        to,
+        subject:'Solicitação de alteração de senha',
+        html,
+        text,
+    });
+
     //5 - usuario vai acessa o link para trocar a senha
-    req.flash('success', 'Enviamos um e-mail com as instruções.'+ resetLink);
+    req.flash('success', `${mailMessage}`);
     res.redirect('/users/login');
 
 };

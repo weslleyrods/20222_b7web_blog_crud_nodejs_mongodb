@@ -16,8 +16,8 @@ exports.changePassword = (req, res)=>{
         return;
     }
     //setPassword, função do passport e que não suporta promises
-    //1º parâmetro recebe a nova senha
-    //2º parâmetro o retorno do processo de salvamento da senha
+        //1º parâmetro recebe a nova senha
+        //2º parâmetro o retorno do processo de salvamento da senha
     req.user.setPassword(req.body.password, async ()=>{
         await req.user.save();
         req.flash('success', 'A senha foi alterada com sucesso!');
