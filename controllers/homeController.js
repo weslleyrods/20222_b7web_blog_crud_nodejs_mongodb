@@ -38,7 +38,16 @@ exports.index = async (req, res)=>{
         if(tags[i]._id == responseJson.tag){
             tags[i].class = "selected"
         }
-    }    
+    }
+    
+    if(req.isAuthenticated()) {
+        for(let i in posts) {
+            if(posts[i].author._id.toString() == req.user._id.toString()) {
+                posts[i].canEdit = true;
+            }
+        }
+    }
+    
     //incorpora no array de tags
     responseJson.tags = tags;
     //console.log(tags); 

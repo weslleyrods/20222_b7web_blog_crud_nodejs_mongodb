@@ -40,9 +40,15 @@ router.post('/post/add',
     postController.addAction
 );
 
-router.get('/post/:slug/edit', authMiddleware.isLogged, postController.edit);
+router.get('/post/:slug/edit', 
+    authMiddleware.isLogged, 
+    postController.canEdit,
+    postController.edit
+);
+
 router.post('/post/:slug/edit', 
     authMiddleware.isLogged,
+    postController.canEdit,
     imageMiddleware.upload, 
     imageMiddleware.resize,
     postController.editAction

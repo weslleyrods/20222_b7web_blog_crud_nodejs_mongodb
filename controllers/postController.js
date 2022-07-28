@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { post } = require('../routes');
-const Post  = mongoose.model('Post')
+const slug = require('slug');
+const Post  = mongoose.model('Post');
 
 exports.view =  async(req, res)=>{
     const post = await Post.findOne({slug: req.params.slug})
@@ -59,3 +59,17 @@ exports.editAction = async (req, res)=>{
     res.redirect('/');
 };
 
+exports.canEdit = async (req, res, next) => {
+    const post = await Post.findOne({slug:req.params.slug}).exec();
+
+    if(post) {
+        if(post.author.toString() == req.user._id.toString()) {
+            next();
+            return;
+        }
+    }
+
+    req.flash('error', 'Você não tem permissão de editar este post.');
+    res.redirect('/');
+    return;
+};

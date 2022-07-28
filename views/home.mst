@@ -13,18 +13,21 @@
         {{#photo}}
         <img src="/media/{{photo}}" alt="">
         {{/photo}}
-        <div class="card-body">
+        <div class=" card-body">
             <h3 class="card-title"><a href="/post/{{slug}}">{{title}}</a></h3>
             <small class="card-text">Autor: {{author.name}}</small>
             <p class="card-text">{{body}}</p>
-            {{#canEdit}}
+
+        {{#canEdit}}
             <div class="card-actions justify-end">
                 <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
             </div>
-            {{/canEdit}}
+        {{/canEdit}}
+
         </div>
     </div>
 {{/posts}}
+
 
 
 <!--
