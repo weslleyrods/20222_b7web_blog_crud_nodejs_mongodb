@@ -1,24 +1,27 @@
 {{> header}}
 
+
 <div class="tags">
     {{#tags}}
-        <div type="button" class="tag btn rounded-pill bg-dark {{class}}" ><a href="/?t={{_id}}">{{_id}} <span class="badge rounded-pill bg-secondary">{{count}}</span></a>
+        <div type="button" class="tag badge btn-active btn-ghost btn-xs"{{class}}><a href="/?t={{_id}}">{{_id}} <span class="badge badge-sm badge-accent">{{count}}</span></a>
         </div>
     {{/tags}}
 </div>
 
 {{#posts}}
-    <div class="card post" style="width: 18rem;">
+    <div class="post card card-compact w-96 bg-base-100 shadow-xl">
         {{#photo}}
-        <img class="card-img-top" src="/media/{{photo}}" alt="">
+        <img src="/media/{{photo}}" alt="">
         {{/photo}}
         <div class="card-body">
             <h3 class="card-title"><a href="/post/{{slug}}">{{title}}</a></h3>
-            <small>Autor: {{author.name}}</small>
+            <small class="card-text">Autor: {{author.name}}</small>
             <p class="card-text">{{body}}</p>
-            {{#user}}
-            <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
-            {{/user}}
+            <div class="card-actions justify-end">
+                {{#user}}
+                <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
+                {{/user}}
+            </div>
         </div>
     </div>
 {{/posts}}
