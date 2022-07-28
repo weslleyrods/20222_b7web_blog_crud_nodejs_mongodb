@@ -5,7 +5,7 @@ const Post  = mongoose.model('Post')
 exports.index = async (req, res)=>{
     ///1º parametro - nome do arquivo que irá redenrizar na pastas views
     let responseJson = {
-    pageTitle: 'HOME',
+    pageTitle: 'Home',
     posts:[],
     tags:[], 
     tag: '',
