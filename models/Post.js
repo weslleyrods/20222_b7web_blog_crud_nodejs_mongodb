@@ -16,11 +16,11 @@ const postSchema = new mongoose.Schema({
         trim: true,
     },
     tags: [String],
-    //author: mongoose.Schema.Types.ObjectId, //para a V1 do aggregate do vinculo de post com o usuario
-    author:{ //V2 para o vinculo de post com o usuario, usando populate
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    }
+    author: mongoose.Schema.Types.ObjectId, //para a V1 do aggregate do vinculo de post com o usuario
+    // author:{ //V2 para o vinculo de post com o usuario, usando populate
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref:'User'
+    // }
 
 });
 
@@ -55,10 +55,10 @@ postSchema.statics.getTagsList = function(){
 postSchema.statics.findPosts = function(filters={}){
     //V2
         //substitui o lookup do aggregate para vinculo de post com usuario
-    return this.find(filters).populate('author');
+    //return this.find(filters).populate('author');
     
     //v1
-    /* 
+    
     //aggregate permite manipular dados de uma coleção com uma sequencia de manipulações
     return this.aggregate([
         //match faz a filtragem dos documentos que atenda a especificação, no caso, o filtro que o usuario passou
@@ -82,7 +82,7 @@ postSchema.statics.findPosts = function(filters={}){
             'author': {$arrayElemAt:['$author',0]}
         }}
     ]); 
-    */
+    
 }
 
 module.exports = mongoose.model('Post', postSchema);

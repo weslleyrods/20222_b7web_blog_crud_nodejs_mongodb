@@ -17,11 +17,11 @@
             <h3 class="card-title"><a href="/post/{{slug}}">{{title}}</a></h3>
             <small class="card-text">Autor: {{author.name}}</small>
             <p class="card-text">{{body}}</p>
+            {{#canEdit}}
             <div class="card-actions justify-end">
-                {{#user}}
                 <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
-                {{/user}}
             </div>
+            {{/canEdit}}
         </div>
     </div>
 {{/posts}}
