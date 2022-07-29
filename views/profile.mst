@@ -1,42 +1,43 @@
 {{>header}}
 
-<h1>Meu Perfil</h1>
-
 
 <form method="POST">
-
-    <label>
-        Nome completo: 
-        <input type="text" name="name" value="{{user.name}}"/>
-    </label>
-    <br/>
-    <label>
-        E-mail: 
-        <input type="email" name="email" value="{{user.email}}"/>
-    </label>
-    <br/>
-    <label>
-        <input type="submit" value="Salvar"/>
-    </label>
-
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row">
+            <div class="post card card-compact w-96 bg-base-100 shadow-xl">
+                <div class=" card-body">
+                    <label>
+                        <h3 class="card-title">Nome completo</h3>
+                        <input class="input input-bordered input-primary w-full max-w-full" type="text" name="name" value="{{user.name}}"/>
+                    </label>
+                    <label>
+                        <h3 class="card-title">E-mail</h3>
+                        <input class="input input-bordered input-primary w-full max-w-full" type="email" name="email" value="{{user.email}}"/>
+                    </label>       
+                        <input class="btn btn-wide btn-active btn-primary normal-case w-full max-w-full"type="submit" value="Salvar">      
+                </div>
+            </div>
+        
 </form>
-
-<hr/>
 
 <form method="POST" action="/profile/password">
+            <div class="post card card-compact w-96 bg-base-100 shadow-xl">
+                <div class=" card-body">
+                    <label>
+                        <h3 class="card-title">Nova senha</h3>
+                        <input class="input input-bordered input-primary w-full max-w-full" type="password" name="password"/>
+                    </label>  
+                    <label>
+                        <h3 class="card-title">Confirmar nova senha</h3>
+                        <input class="input input-bordered input-primary w-full max-w-full" type="password" name="password-confirm"/>
+                    </label>  
+                        <input class="btn btn-wide btn-active btn-primary normal-case w-full max-w-full"type="submit" value="Salvar">      
 
-    <label>
-        Nova senha: 
-        <input type="password" name="password"/>
-    </label>
-    <br/>
-    <label>
-        Confirmar nova senha: 
-        <input type="password" name="password-confirm"/>
-    </label>
-    <br/>
-    <label>
-        <input type="submit" value="Salvar"/>
-    </label>
-
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+
+
+
