@@ -70,9 +70,9 @@ ul{
     max-width: 100%;
 }
 
-form{
+/* form{
     margin: 20px;
-}
+} */
 
 label{
     display: inline-block;
@@ -93,7 +93,7 @@ textarea{
     height: 200px;
 }
 input[type=submit]:hover{
-    background-color: #EFEFEF;
+    /* background-color: #EFEFEF; */
     cursor: pointer;
 }
 

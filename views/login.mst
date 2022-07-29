@@ -1,8 +1,7 @@
 {{> header}}
 
-<h1>Faça o seu Login</h1>
-
 <form method="POST">
+    <!--
     <label>
         E-mail:
         <input type="email" name="email">
@@ -16,6 +15,36 @@
     <label>
         <input type="submit" value="Logar">
     </label>
+-->
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <div class="text-center lg:text-left">
+            <h1 class="text-5xl font-bold">Bem-vindo!</h1>
+            <p class="py-6">Olá! Seja bem-vindo ao projeto de blog utilizando NodeJS.</p>
+          </div>
+          <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Email</span>
+                </label>
+                <input name="email" type="email" placeholder="email" class="input input-bordered" />
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Senha</span>
+                </label>
+                <input name="password" type="password" placeholder="senha" class="input input-bordered">
+                <label class="label">
+                  <a href="/users/forget" class="label-text-alt link link-hover">Esqueceu a senha?</a>
+                </label>
+              </div>
+              <div class="form-control mt-6">
+                <input type="submit" class="btn btn-active btn-primary" value="Logar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </form>
 
-<a href="/users/forget">Esqueci a minha senha</a>
