@@ -1,36 +1,32 @@
 {{> header}}
 
-<h2>Editar post</h2>
-
-<form method="POST" enctype="multipart/form-data">
-    <label>
-        Imagem:
-        <input type="file" name="photo">
-        <br/>
-        {{#post.photo}}
-        <img src="/media/{{post.photo}}" width="200">
-        {{/post.photo}}
-    </label>
-    <br/>
-    <label>
-        Titulo: 
-        <input type="text" name="title" value="{{post.title}}"/>
-    </label>
-    <br/>
-    <label>
-        Corpo: 
-        <textarea name="body" id="" cols="30" rows="10">{{post.body}}</textarea>
-    </label>
-    <br/>
-
-    <label>
-        Tags: <small>(Separar as tags por vírgula)</small><br/>
-        <input type="text" name="tags" value="{{post.tags}}">
-    </label>
-    <br/>
-
-    <label for="">
-        <input type="submit" value="Salvar"/>
-    </label>
-
+<form method="POST" enctype="multipart/form-data"> 
+    <div class="post card card-compact w-96 bg-base-100 shadow-xl">
+        <div class=" card-body">
+            <label>
+                <h3 class="card-title"> Imagem</h3>
+                {{#post.photo}}
+                <img src="/media/{{post.photo}}" width="200">
+                {{/post.photo}}
+                <label class="btn btn-sm btn-primary"for="upload">Upload</label>
+                <input id="upload" type="file" name="photo" style="display: none;">
+            </label>
+            <label>
+                <h3 class="card-title">Titulo</h3>
+                <input class="input input-bordered input-primary w-full max-w-full" type="text" name="title" value="{{post.title}}"/>
+            </label>
+            <label>
+                <h3 class="card-title">Corpo</h3>
+                <textarea class="textarea textarea-primary" name="body" id="" cols="30" rows="10">{{post.body}}</textarea>
+            </label>
+            <label>
+                <h3 class="card-title">Tags</h3>     
+                <input class="input input-bordered input-primary input-sm w-full max-w-full" placeholder="Separar as tags por vírgula" type="text" name="tags" value="{{post.tags}}">
+            </label>
+            <label for="">
+                <input class="btn btn-wide btn-active btn-primary w-full max-w-full"type="submit" value="Salvar">      
+            </label>
+        </div>
+    </div>
 </form>
+

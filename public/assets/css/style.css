@@ -81,13 +81,13 @@ label{
 
 input, textarea{
     display: block;
-    padding: 10px 15px;
-    border: 2px solid #CCC;
+    /* padding: 10px 15px;
+    border: 2px solid #CCC; */
     font-size: 16px;
     outline: 0;
-    resize: none;
+    resize: none !important;
     margin-top: 10px;
-    width: 400px;
+    width: 100%;
 }
 textarea{
     height: 200px;
