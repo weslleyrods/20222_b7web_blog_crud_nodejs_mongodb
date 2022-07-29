@@ -12,9 +12,11 @@
                 <div class="card-body">
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text">Email</span>
+                            <span class="label-text">Senha</span>
                         </label>
-                        <input name="email" type="email" placeholder="email" class="input input-bordered" />
+                        <input name="password" type="password" placeholder="senha" class="input input-bordered">
+                        <label class="label">
+                            
                     </div>
                     <div class="form-control mt-6">
                         <input type="submit" class="btn normal-case btn-active btn-primary" value="Redefinir senha">
