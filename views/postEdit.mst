@@ -24,7 +24,7 @@
                 <input class="input input-bordered input-primary input-sm w-full max-w-full" placeholder="Separar as tags por vírgula" type="text" name="tags" value="{{post.tags}}">
             </label>
             <label for="">
-                <input class="btn btn-wide btn-active btn-primary w-full max-w-full"type="submit" value="Salvar">      
+                <input class="btn btn-wide btn-active btn-primary normal-case w-full max-w-full"type="submit" value="Salvar">      
             </label>
         </div>
     </div>

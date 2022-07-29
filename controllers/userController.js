@@ -87,8 +87,8 @@ exports.forgetAction = async (req, res)=>{
     //1 - verifica se o usuario existe
     const user = await User.findOne({email:req.body.email}).exec();
     if(!user){
-        req.flash('error', `${mailMessage}`);
-        res.redirect('/users/forget');
+        req.flash('info', `${mailMessage}`);
+        res.redirect('/users/login');
         return;
     }
     //2 - gera um token com data de expiração e salva no bd
@@ -113,7 +113,7 @@ exports.forgetAction = async (req, res)=>{
     });
 
     //5 - usuario vai acessa o link para trocar a senha
-    req.flash('success', `${mailMessage}`);
+    req.flash('info', `${mailMessage}`);
     res.redirect('/users/login');
 
 };

@@ -1,16 +1,27 @@
 {{> header}}
 
-<h1>Esqueci minha senha</h1>
-
 <form method="POST">
-    <label>
-        E-mail:
-        <input type="email" name="email">
-    </label>
-    <br/>
-
-    <label>
-        <input type="submit" value="Redefinir senha">
-    </label>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">   
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold">Troca a senha</h1>
+                <p class="py-6">Identifique-se para receber um e-mail com as instruções e o link para criar uma nova senha.
+                </p>
+            </div>      
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div class="card-body">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input name="email" type="email" placeholder="email" class="input input-bordered" />
+                    </div>
+                    <div class="form-control mt-6">
+                        <input type="submit" class="btn normal-case btn-active btn-primary" value="Redefinir senha">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
