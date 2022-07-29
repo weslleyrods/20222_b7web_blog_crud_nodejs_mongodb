@@ -23,7 +23,6 @@
                 <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
             </div>
         {{/canEdit}}
-
         </div>
     </div>
 {{/posts}}
