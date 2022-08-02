@@ -20,7 +20,8 @@
 
         {{#canEdit}}
             <div class="card-actions justify-end">
-                <a href="/post/{{slug}}/edit" class="btn btn-primary">Editar</a>
+                <a href="/post/{{slug}}/edit" class="btn normal-case btn-primary">Editar</a>
+                <a href="/post/{{slug}}/delete" class="btn normal-case btn-primary">Remover</a>
             </div>
         {{/canEdit}}
         </div>

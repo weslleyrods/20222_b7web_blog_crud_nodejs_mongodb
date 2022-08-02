@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slug = require('slug');
+const { post } = require('../routes');
 const Post  = mongoose.model('Post');
 
 exports.view =  async(req, res)=>{
@@ -72,4 +73,16 @@ exports.canEdit = async (req, res, next) => {
     req.flash('error', 'Você não tem permissão de editar este post.');
     res.redirect('/');
     return;
+};
+
+
+exports.delete = async (req, res) =>{
+
+    console.log(req.params);
+
+    const post = await Post.findOneAndDelete({slug:req.params.slug})
+        req.flash('success', 'Post deletado com sucesso!');
+        res.redirect('/');
+        return;
+
 };

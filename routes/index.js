@@ -56,6 +56,8 @@ router.post('/post/:slug/edit',
 
 router.get('/post/:slug', postController.view);
 
+router.get('/post/:slug/delete', authMiddleware.isLogged, postController.delete);
+
 
 /* router.get('/', (req, res)=>{ 
     //let nome = req.query.nome;
