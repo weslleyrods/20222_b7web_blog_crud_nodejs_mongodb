@@ -1,6 +1,7 @@
 {{>header}}
 <h2>Adicionar post</h2>
 
+<!--
 <form method="POST" enctype="multipart/form-data">
 
     <label>
@@ -14,7 +15,7 @@
     </label>
     <br/>
     <label>
-        Titulo: 
+        Corpo: 
         <textarea name="body" id="" cols="30" rows="10"></textarea>
     </label>
     <br/>
@@ -32,3 +33,32 @@
 
     
 </form>
+-->
+
+<form method="POST" enctype="multipart/form-data"> 
+    <div class="post card card-compact w-96 bg-base-100 shadow-xl">
+        <div class=" card-body">
+            <label>
+                <h3 class="card-title"> Imagem</h3>
+                <label class="btn btn-sm btn-primary"for="upload">Upload</label>
+                <input id="upload" type="file" name="photo" style="display: none;">
+            </label>
+            <label>
+                <h3 class="card-title">Titulo</h3>
+                <input class="input input-bordered input-primary w-full max-w-full" type="text" name="title"/>
+            </label>
+            <label>
+                <h3 class="card-title">Corpo</h3>
+                <textarea class="textarea textarea-primary" name="body" id="" cols="30" rows="10"></textarea>
+            </label>
+            <label>
+                <h3 class="card-title">Tags</h3>     
+                <input class="input input-bordered input-primary input-sm w-full max-w-full" placeholder="Separar as tags por vírgula" type="text" name="tags">
+            </label>
+            <label>
+                <input class="btn btn-wide btn-active btn-primary normal-case w-full max-w-full"type="submit" value="Salvar">      
+            </label>
+        </div>
+    </div>
+</form>
+
