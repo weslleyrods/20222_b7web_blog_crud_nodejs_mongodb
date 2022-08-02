@@ -69,6 +69,9 @@ ul{
 .post img{
     max-width: 100%;
 }
+.post a:hover{
+    color: #570DF8;
+}
 
 form{
     margin: 20px;
