@@ -5,7 +5,7 @@
         <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="text-center lg:text-left">
                     <h1 class="text-5xl font-bold">Bem-vindo!</h1>
-                    <p class="py-6">Olá! Seja bem-vindo ao projeto de blog utilizando NodeJS.</p>
+                    <p class="linkTitle py-6">Olá! Seja bem-vindo ao blog construido com NodeJS.</p>
             </div>
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div class="card-body">
@@ -22,7 +22,8 @@
                         <input name="password" type="password" placeholder="senha" class="input input-bordered">
                         <label class="label">
                             <a href="/users/forget" class="label-text-alt link link-hover">Esqueceu a senha?</a>
-                        </label>
+                            <a href="/users/register" class="label-text-alt link link-hover">Não possui cadastro?</a>
+                        </label>                
                     </div>
                     <div class="form-control mt-6">
                         <input type="submit" class="btn btn-active btn-primary normal-case" value="Logar">

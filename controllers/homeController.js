@@ -11,7 +11,7 @@ exports.index = async (req, res)=>{
     tag: '',
     };
 
-    console.log(req.user);
+    console.log("Usuário logado: "+req.user);
 
     //pega da query(url) a tag selecionada
     responseJson.tag = req.query.t;

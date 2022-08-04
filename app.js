@@ -42,6 +42,7 @@ app.use((req, res, next)=>{
     res.locals.flashes = req.flash();
     res.locals.user = req.user;
 
+
     if(req.isAuthenticated()){
         //filtrar menu para guest ou logged
         res.locals.h.menu = res.locals.h.menu.filter(i=>i.logged);

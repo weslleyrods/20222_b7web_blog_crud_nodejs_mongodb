@@ -27,6 +27,7 @@ exports.addAction = async (req, res)=>{
     }
     req.flash('success', 'Post salvo com sucesso!');
     res.redirect('/');
+    console.log("Id do post adicionado: "+post._id);
 }; 
 
 exports.edit = async (req, res)=>{
@@ -78,9 +79,9 @@ exports.canEdit = async (req, res, next) => {
 
 exports.delete = async (req, res) =>{
 
-    console.log(req.params);
+    const post = await Post.findOneAndDelete({slug: req.params.slug });
+    //console.log(res.json())
 
-    const post = await Post.findOneAndDelete({slug:req.params.slug})
         req.flash('success', 'Post deletado com sucesso!');
         res.redirect('/');
         return;

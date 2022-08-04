@@ -1,24 +1,38 @@
 {{> header}}
 
-<h1>Faça o seu Cadastro</h1>
 
 <form method="POST">
-    <label>
-        Nome:
-        <input type="text" name="name"/>
-    </label>
-    <br/>
-    <label>
-        E-mail:
-        <input type="email" name="email"/>
-    </label>
-    <br/>
-    <label>
-        Senha:
-        <input type="password" name="password"/>
-    </label>
-    <br/>
-    <label>
-        <input type="submit" value="Cadastrar"/>
-    </label>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="text-center lg:text-left">
+                    <h1 class="text-5xl font-bold">Cadastro</h1>
+                    <p class="linkTitle py-6"><a href="/users/login">Já possui cadstro?</a></p>
+            </div>
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div class="card-body">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Nome completo</span>
+                        </label>
+                        <input name="name" type="text" placeholder="nome completo" class="input input-bordered" />
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input name="email" type="email" placeholder="email" class="input input-bordered" />
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Senha</span>
+                        </label>
+                        <input name="password" type="password" placeholder="senha" class="input input-bordered">
+                    </div>
+                    <div class="form-control mt-6">
+                        <input type="submit" class="btn btn-active btn-primary normal-case" value="Cadastrar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

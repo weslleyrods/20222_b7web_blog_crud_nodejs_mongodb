@@ -5,7 +5,7 @@
         <div class=" card-body">
             <label>
                 <h3 class="card-title"> Imagem</h3>
-                <label class="btn btn-sm btn-primary"for="upload">Upload</label>
+                <label class="btn btn-sm btn-primary normal-case"for="upload">Upload</label>
                 <input id="upload" type="file" name="photo" style="display: none;">
             </label>
             <label>

@@ -12,10 +12,12 @@
                 <div class="card-body">
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text">Senha</span>
+                            <span class="label-text">Email</span>
                         </label>
-                        <input name="password" type="password" placeholder="senha" class="input input-bordered">
+                        <input name="email" type="email" placeholder="email" class="input input-bordered">
                         <label class="label">
+
+                            
                             
                     </div>
                     <div class="form-control mt-6">

@@ -1,4 +1,4 @@
-exports.defaultPageTitle = "Projeto Blog";
+exports.defaultPageTitle = "Blog com NodeJS";
 
 exports.menu = [
     {name: 'Home', slug: '/',  guest:  true, logged: true },

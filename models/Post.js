@@ -25,6 +25,7 @@ const postSchema = new mongoose.Schema({
 });
 
 postSchema.pre('save', async function(next){
+
     if(this.isModified('title')){
         this.slug = slug(this.title, {lower:true});
 

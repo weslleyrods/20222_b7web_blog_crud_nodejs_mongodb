@@ -16,6 +16,10 @@ header h1{
 header a{
     color: white;
 }
+header a:hover{
+    color: white;
+    text-decoration: none;
+}
 
 a{
     padding: 0px;
@@ -26,6 +30,8 @@ a:hover{
     color: white;
     text-decoration: none;
 }
+
+
 
 
 ul, li{
@@ -69,8 +75,9 @@ ul{
 .post img{
     max-width: 100%;
 }
-.post a:hover{
+.linkTitle a:hover{
     color: #570DF8;
+    text-decoration: noe;;
 }
 
 form{
